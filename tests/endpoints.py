@@ -56,8 +56,5 @@ class TestEndpoints(unittest.TestCase):
             print(response.text)
         return
 
-
-
-
 if __name__ == '__main__':
     unittest.main()

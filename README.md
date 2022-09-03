@@ -55,3 +55,4 @@ and
 - test heavy workloads and consider using Pools for better performance
 - implement a global logging solution
 - define rules, is the user allowed to enter a book?
+- deploy solution on cloud with automatic helm deployment

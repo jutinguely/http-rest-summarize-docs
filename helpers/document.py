@@ -2,7 +2,6 @@ from helpers.summarization import SummarizationTask, Summary
 import redis 
 import hashlib
 import multiprocessing
-import logging
 
 class DocumentManager(object):
 
