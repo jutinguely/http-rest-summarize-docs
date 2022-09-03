@@ -1,0 +1,120 @@
+{
+	"info": {
+		"_postman_id": "f0761a96-d4c1-4650-8076-ea95aacf1e2b",
+		"name": "http-summarise",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "store",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"text\": \"(CNN)The Department of Justice doesn't want you to believe what former President Donald Trump says about the classified documents found squirreled away at Mar-a-Lago. So rather than let the former President play up an 'incomplete and inaccurate narrative' about the classified documents, government lawyers have shown some of them to us. A photo of a spread of classified documents laid out on the floor as evidence at Mar-a-Lago is one of the many tantalizing breadcrumbs included in a new court filing by the DOJ late Tuesday night. We still don't know what's in the documents. The larger picture is coming together. These piecemeal details help form a picture of the case the DOJ could potentially bring against Trump and his associates. Government prosecutors included the photo evidence, presumably taken during the August 8 search of Trump's Florida residence, in a filing that aims to squash his effort to slow down their case.\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://172.20.10.2:5001/store",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"10",
+						"2"
+					],
+					"port": "5001",
+					"path": [
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_doc",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://172.20.10.2:5001/get_document?id=9ea57fb6c560015590f6c1842d35e731",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"10",
+						"2"
+					],
+					"port": "5001",
+					"path": [
+						"get_document"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "9ea57fb6c560015590f6c1842d35e731",
+							"description": "document id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_summary",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://172.20.10.2:5001/get_summary?id=9ea57fb6c560015590f6c1842d35e731",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"10",
+						"2"
+					],
+					"port": "5001",
+					"path": [
+						"get_summary"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "9ea57fb6c560015590f6c1842d35e731",
+							"description": "document id"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get_doc_ids",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://172.20.10.2:5001/get_documentIds",
+					"protocol": "http",
+					"host": [
+						"172",
+						"20",
+						"10",
+						"2"
+					],
+					"port": "5001",
+					"path": [
+						"get_documentIds"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

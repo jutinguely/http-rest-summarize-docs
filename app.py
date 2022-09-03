@@ -1,6 +1,5 @@
-from multiprocessing.dummy import freeze_support
-from flask import Flask, request
-from helpers.database import Database 
+from flask import Flask, request, jsonify
+from helpers.document import DocumentManager
 import yaml
 
 app = Flask(__name__)
@@ -9,29 +8,30 @@ DB = None
 
 @app.post("/store")
 def store_document() -> int:
-    if "text" in set(request.json.keys()): # -d {text: values}
-        return DB.write_document(request.json["text"])
+    if "text" in set(request.json.keys()): 
+        return jsonify(DB.write_document(request.json["text"])), 200
     else:
-        return {"message": "bad request"}
+        return jsonify({"message": "bad request"}), 400
 
 @app.get("/get_document")
 def get_document() -> dict:
-    if "id" in set(request.args.keys()): # {id: value}
-        return DB.load_document(request.args["id"])
+    if "id" in set(request.args.keys()): 
+        return jsonify(DB.load_document(request.args["id"])), 200
     else:
-        return {"message": "bad request"}
+        return jsonify({"message": "bad request"}), 400                      
 
 @app.get("/get_summary")
 def get_summary() -> dict:
-    if "id" in set(request.args.keys()): # {id: value}
-        return DB.load_document_summary(request.args["id"])
+    if "id" in set(request.args.keys()): 
+        return jsonify(DB.load_document_summary(request.args["id"])), 200
     else:
-        return {"message": "bad request"}
+        return jsonify({"message": "bad request"}), 400
 
 @app.get("/get_documentIds")
 def get_documentIds() -> dict:
-    return DB.load_documentIds()
+    return jsonify(DB.load_documentIds()), 200
  
 if __name__ == '__main__':
-    DB = Database(host=config["host"], port=6379, db=0, persist=config["persist_data"])
+    DB = DocumentManager(host=config["host"], port=6379, config=config)
+    # for secure communication enable https -> ssl_context, generate crt/pub keys
     app.run(host=config["host"], port=config["port_api"], debug=True)
